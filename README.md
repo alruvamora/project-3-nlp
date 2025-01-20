@@ -1,31 +1,84 @@
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
+# News Classification Script
 
-# Natural Language Processing Challenge
+This Python script processes a dataset of news headlines and classifies them using a pre-trained machine learning model. The script ensures proper formatting of the dataset and generates an updated CSV file with the new classifications.
 
-## Introduction
+## Features
 
-Learning how to process text is a skill required for Data Scientists. 
-In this project, you will put these skills into practice to identify whether a news headline is real or fake news.
+- Reads a dataset of news headlines in tab-separated format.
+- Ensures all labels in the dataset are of a specific value (`2` in this case).
+- Utilizes a pre-trained model (`news_classifier.pkl`) and a vectorizer (`tfidf_vectorizer.pkl`) to classify the headlines.
+- Outputs an updated dataset with the predicted labels.
 
-## Project Overview
+## Requirements
 
-In the file `dataset/training_data.csv` you will find dataset containing news headlines and their tags: 
-0, if the headline is fake news, and, 1, if the headline is real news. 
+- Python 3.8 or higher
+- Required Python libraries:
+  - pandas
+  - pickle
+- Pre-trained files:
+  - `news_classifier.pkl`
+  - `tfidf_vectorizer.pkl`
 
-Your goal is to build a classifier that is able to distinguish between the two.
+## Directory Structure
 
-Once you have a classifier built, then use it to predict the labels for `dataset/testing_data.csv`. Generate a new file
-where the label `2` has been replaced by `0` (fake) or `1` (real) according to your model. Please respect the original file format, 
-do not include extra columns, and respect the column separator. 
+```
+project/
+│
+├── dataset/
+│   ├── testing_data.csv       # Input dataset (tab-separated)
+│   ├── testing_data_output.csv # Output dataset
+│
+├── news_classifier.pkl        # Pre-trained classification model
+├── tfidf_vectorizer.pkl       # Pre-trained TF-IDF vectorizer
+├── script.py                  # Main script
+```
 
+## Usage
 
-## Guidance
-Like in a real life scenario, you are able to make your own choices and text treatment. 
-Use the techniques you have learned and the common packages to process this data and classify the text.
+1. Place the input dataset (`testing_data.csv`) in the `dataset` directory.
+2. Ensure the pre-trained model (`news_classifier.pkl`) and vectorizer (`tfidf_vectorizer.pkl`) are in the root directory.
+3. Run the script:
+   ```bash
+   python script.py
+   ```
+4. The script will process the dataset and save the updated file as `testing_data_output.csv` in the `dataset` directory.
 
-## Deliverables
+## Input Format
 
-1. **Python Code:** Provide well-documented Python code that conducts the analysis.
-2. **Predictions:** A csv file in the same format as `testing_data.csv` but with the predicted labels (0 or 1)
-3. **Accuracy estimation:** Provide the teacher with your estimation of how your model will perform.
-4. **Presentation:** You will present your model in a 10-minute presentation. Your teacher will provide further instructions.
+The input CSV file must:
+- Use tab (`\t`) as the delimiter.
+- Contain two columns: `label` and `headline`.
+- Exclude a header row.
+
+Example:
+```
+1   Example headline 1
+0   Example headline 2
+```
+
+## Output Format
+
+The output CSV file:
+- Retains the tab-separated format.
+- Replaces the `label` column with the predicted values.
+- Does not include column headers.
+
+Example:
+```
+2   Example headline 1
+2   Example headline 2
+```
+
+## Notes
+
+- Ensure that the input file format adheres to the specified structure.
+- Modify the `base_dir`, `input_csv_file`, and `output_csv_file` variables in the script if your directory structure is different.
+- The script assumes the presence of a valid pre-trained model and vectorizer.
+
+## Contact
+
+Álvaro Ruedas Mora
+    
+- Data Scientist from **Ironhack**
+- Industrial and Automation Electronics Engineer from **Polytechnic University of Madrid**
+- MBA from **EAE Business School**
